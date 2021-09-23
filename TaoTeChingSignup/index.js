@@ -1,3 +1,7 @@
+const headers = {
+    'Access-Control-Allow-Origin': '*'
+};
+
 const validateEmail = (email) => {
     if (typeof email !== 'string') {
         return false;
@@ -18,7 +22,8 @@ module.exports = async function (context, req) {
 
         context.res = {
             status: 200,
-            body: "Subscribed!"
+            body: "Subscribed!",
+            headers
         };
 
         return;
@@ -26,6 +31,7 @@ module.exports = async function (context, req) {
 
     context.res = {
         status: 400,
-        body: 'You fucked up bub'
+        body: 'You fucked up bub',
+        headers
     }
 }
