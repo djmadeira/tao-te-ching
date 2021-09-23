@@ -1,0 +1,28 @@
+{
+  "bindings": [
+    {
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 0 6 * * *"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "chapter",
+      "databaseName": "TaoTeChing",
+      "collectionName": "Items",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "CosmosDbConnectionString"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "subscribers",
+      "databaseName": "TaoTeChing",
+      "collectionName": "Subscribers",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "CosmosDbConnectionString"
+    }
+  ]
+}
