@@ -5,13 +5,14 @@ module.exports = async function (context, myTimer, chapters, subscribers) {
 
     // Rotate through the chapters in order
     const daysSinceEpoch = Math.floor(Date.now() / 86400000);
-    const chapter = chapters[daysSinceEpoch % 81].text.replace(/\n/g, '<br>');
+    const index = daysSinceEpoch % 81;
+    const chapter = chapters[index].text.replace(/\n/g, '<br>');
 
     const msg = {
         to: subscribers.map((sub) => sub.email),
         from: 'tao@cognonaut.xyz',
         templateId: 'd-18b270234abc4e7892587e408a80ec64',
-        dynamicTemplateData: { chapter }
+        dynamicTemplateData: { chapter, index: index + 1 }
     };
     sgMail.send(msg);
 };
